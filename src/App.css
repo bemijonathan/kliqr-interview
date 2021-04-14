@@ -1,38 +1,98 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  max-width: 1440px;
+  margin: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.__sidebar {
+  display: flex;
+  max-width: 350px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+@import url('https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css');
+
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+/* Boitif Font */
+@font-face {
+	font-family: "Biotif-black";
+	src: url("./assets/biotif/Biotif-Black.ttf") format("truetype");
+}
+@font-face {
+	font-family: "Biotif-bold";
+	src: url("./assets/biotif/Biotif-Bold.ttf") format("truetype");
+}
+@font-face {
+	font-family: "Biotif-book";
+	src: url("./assets/biotif/Biotif-Book.ttf") format("truetype");
+}
+@font-face {
+	font-family: "Biotif-extrabold";
+	src: url("./assets/biotif/Biotif-ExtraBold.ttf") format("truetype");
+}
+@font-face {
+	font-family: "Biotif-light";
+	src: url("./assets/biotif/Biotif-Light.ttf") format("truetype");
+}
+@font-face {
+	font-family: "Biotif-medium";
+	src: url("./assets/biotif/Biotif-Medium.ttf") format("truetype");
+}
+@font-face {
+	font-family: "Biotif";
+	src: url("./assets/biotif/Biotif-Regular.ttf") format("truetype");
+}
+@font-face {
+	font-family: "Biotif-semibold";
+	src: url("./assets/biotif/Biotif-SemiBold.ttf") format("truetype");
+}
+
+.biotif {
+	font-family: "Biotif";
+}
+.biotif-semibold {
+	font-family: "Biotif-semibold";
+}
+.biotif-medium {
+	font-family: "Biotif-medium";
+}
+.biotif-light {
+	font-family: "Biotif-light";
+}
+.biotif-extrabold {
+	font-family: "Biotif-extrabold";
+}
+.biotif-book {
+	font-family: "Biotif-book";
+}
+.biotif-bold {
+	font-family: "Biotif-bold";
+}
+.biotif-black {
+	font-family: "Biotif-black";
+}
+.__sidenav {
+	width: 30%;
+}
+.__content {
+	background: #f2f2f2;
+	padding: 66px 16px;
+	height: calc(100vh - 82px);
+	overflow-y: scroll;
+}
+.user:hover {
+	background-color: #80808029;
+	border-radius: 10px;
+}
+.__transact {
+	font-size: 10px;
+}
+.circle {
+	font-size: 5px;
 }
