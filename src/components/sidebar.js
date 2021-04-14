@@ -1,5 +1,4 @@
 const UsersComponent = (props) => {
-    const default_image = 'https://cdn.dribbble.com/users/230875/screenshots/12078079/media/7ba8ec4a42b529dcbbc695ce0dd07a4a.jpg'
     return (
         <>
             {
@@ -9,7 +8,7 @@ const UsersComponent = (props) => {
                             {/* {JSON.stringify(e)} */}
                             <div className="flex items-center" onClick={ f =>  props.newUser(e.id) }>
                                 <div className="">
-                                    <img src={e.avatar || default_image} className="rounded-full w-8 h-8 mr-4" alt="" />
+                                    <img src={e.avatar} className="rounded-full w-8 h-8 mr-4" alt="" />
                                 </div>
                                 <div>
                                     <h4 className="biotif-semibold text-base tracking-wide  mb-1">{e.first_name} {e.last_name}</h4>
@@ -35,7 +34,7 @@ const UsersComponent = (props) => {
 export default function Sidebar(props) {
 
     return (
-        <div className="overflow-hidden __sidenav pt-12 px-8">
+        <div className="__sidenav pt-12 px-8">
             <div className="">
                 <h4 className="biotif-semibold text-base pl-5">{'Users'.toUpperCase()}</h4>
             </div>

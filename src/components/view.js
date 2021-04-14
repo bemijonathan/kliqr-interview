@@ -1,6 +1,6 @@
 import moment from "moment";
 import React from "react";
-import { getUnique, total } from "../utils/dto";
+import { total } from "../utils/dto";
 
 export default function view(props) {
 	const { user, detail } = props.userDetail;
@@ -9,10 +9,10 @@ export default function view(props) {
 
 	console.log(user, detail, trend, similarUsers, "prpppps");
 	return (
-		<div className=" h-screen  flex-grow flex flex-col items-center pt-24">
+		<div className=" h-screen overflow-y-auto__ flex-grow flex flex-col items-center pt-24">
 			{/* {JSON.stringify(props.userDetail)} */}
 			<div>
-				<img src="/images/image 5.png" className="rounded-full " alt="" />
+				<img src={user? user.avatar : ''} className="rounded-full " alt="" />
 			</div>
 			<div className="mt-2">
 				<h4 className="biotif-semibold text-base tracking-wide">
@@ -32,7 +32,7 @@ export default function view(props) {
 				<div className="p-4 border border-gray-200 rounded-md shadow bg-white">
 					<p className="text-sm biotif mb-1">Total Spent</p>
 					<p className="biotif-semibold text-blue-700 text-xl font-semibold">
-						#{detail ? total(detail).total_spent * 10 : ""}0.00
+						#{detail ? total(detail).total_spent : ""}
 					</p>
 				</div>
 				<div className="p-4 border border-gray-200 rounded-md shadow bg-white">
@@ -52,34 +52,29 @@ export default function view(props) {
 				<div>
 					<h4 className="biotif-semibold text-base ">Recurring Expenses</h4>
 					<div className="mt-4 grid grid-cols-2 gap-4">
-						{/* {JSON.stringify(detail)} */}
-						{trend === undefined && trend !== JSON.stringify([]) ? (
-							trend.map((e, i) => {
-								return (
-									<div
-										className="py-2 px-6 flex items-center justify-center bg-blue-400 rounded-md"
-										key={i}
-									>
-										<i className="ri-gift-fill"></i>
-									</div>
-								);
-							})
-						) : getUnique(detail).length ? (
-							getUnique(detail).map((e, i) => {
-								return (
-									<div
-										className="py-2 px-6 flex items-center justify-center bg-blue-400 rounded-md"
-										key={i}
-									>
-										<i className="ri-gift-fill mr-2"></i>
-										<p className="tex" style={{ fontSize: "8px" }}>
-											{e.category}{" "}
-										</p>
-									</div>
-								);
-							})
+						{/* {JSON.stringify(trend)} */}
+						{trend
+							? trend.map((e, i) => {
+									return (
+										<div
+											className="py-2 px-6 flex items-center justify-center bg-blue-400 rounded-md"
+											key={i}
+										>
+											<i className="ri-gift-fill"></i>
+											<span> {e} </span>
+										</div>
+									);
+							  })
+							: ""}
+
+						{trend ? (
+							trend.length === 0 ? (
+								<h1>No reoccuring expense Found</h1>
+							) : (
+								""
+							)
 						) : (
-							<h1>No Transactions Found</h1>
+							""
 						)}
 					</div>
 				</div>
@@ -97,7 +92,6 @@ export default function view(props) {
 									<div
 										className="flex items-start px-4 mt-2 py-2 user"
 										key={e.id}
-										
 									>
 										{/* {JSON.stringify(e)} */}
 										<div className="" onClick={() => props.newUser(e.id)}>
