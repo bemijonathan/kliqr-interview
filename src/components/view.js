@@ -91,21 +91,23 @@ export default function view(props) {
 						</span>
 					</h4>
 					{similarUsers !== undefined ? (
-						similarUsers.length  ? (
+						similarUsers.length ? (
 							similarUsers.map((e) => {
 								return (
 									<div
 										className="flex items-start px-4 mt-2 py-2 user"
 										key={e.id}
+										
 									>
-										<div className="">
+										{/* {JSON.stringify(e)} */}
+										<div className="" onClick={() => props.newUser(e.id)}>
 											<img
 												src="/images/image 5.png"
 												className="rounded-full w-3/5"
 												alt=""
 											/>
 										</div>
-										<div>
+										<div onClick={() => props.newUser(e.userId)}>
 											<h4 className="biotif-semibold text-sm tracking-wide">
 												{e.first_name} {e.last_name}
 											</h4>

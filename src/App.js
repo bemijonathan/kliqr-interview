@@ -38,13 +38,12 @@ export default function App() {
 	const getEveryInformation = async (id) => {
 		setLoading(true);
 		try {
-    
 			if (id) {
-        const { data } = await request.get("users/" + id);
-        // debugger
-        setUserDetails({ detail: data.data.details, user: data.data.user });
-        const trend = await getTrend(data.data.user.id);
-        debugger
+				const { data } = await request.get("users/" + id);
+				// debugger
+				setUserDetails({ detail: data.data.details, user: data.data.user });
+				const trend = await getTrend(data.data.user.id);
+				debugger;
 				await getSimilar(trend, data.data.user.id);
 			} else {
 				getUsers(id).then(async (e) => {
@@ -66,28 +65,32 @@ export default function App() {
 
 	useEffect(() => {
 		getEveryInformation();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
 		<>
 			<nav className="h-10 bg-purple-900"></nav>
 			{loading ? (
-				<div>Loading Please Wait ....</div>
+				<div className="flex items-center justify-center h-screen">
+					Loading Please Wait ....
+				</div>
 			) : err ? (
-				<div>An Error Occured Contact Support</div>
+				<div className="flex items-center justify-center h-screen">
+					An Error Occured Contact Support
+				</div>
 			) : (
 				<section
 					className="relative bg-white h-screen overflow-hidden"
 					id="app"
 				>
 					<div className="flex">
-						<Sidebar userState={userState} newUser={getEveryInformation}/>
+						<Sidebar userState={userState} newUser={getEveryInformation} />
 						<View
 							userDetail={userDetail}
 							trend={trend}
 							similarUsers={similar}
-              newUser={getEveryInformation}
+							newUser={getEveryInformation}
 						/>
 					</div>
 				</section>
