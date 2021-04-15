@@ -48,15 +48,20 @@ export default function App() {
 				await getSimilar(trend, data.data.user.id);
 				setLoading(false);
 			} else {
-				getUsers(id).then(async (e) => {
-					console.log(e);
-					setstate(e.data);
-					setUserDetails({ detail: e.details, user: e.user });
-					const trend = await getTrend(e.user.id);
-					await getSimilar(trend, e.user.id);
-					setLoading(false);
-					return e;
-				});
+				getUsers(id)
+					.then(async (e) => {
+						setstate(e.data);
+						setUserDetails({ detail: e.details, user: e.user });
+						const trend = await getTrend(e.user.id);
+						await getSimilar(trend, e.user.id);
+						setLoading(false);
+						return e;
+					})
+					.catch((e) => {
+						console.log(e);
+						setError(true);
+						setLoading(false);
+					});
 			}
 		} catch (error) {
 			console.log(error);
